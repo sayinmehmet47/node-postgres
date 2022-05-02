@@ -3,7 +3,7 @@ const pool = new Pool({
   user: 'sayinmehmet47',
   host: 'localhost',
   database: 'deneme',
-  password: 'array.map(47)',
+  password: process.env.PASSWORD_POOL,
   port: 5432,
 });
 
