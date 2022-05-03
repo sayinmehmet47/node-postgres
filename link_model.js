@@ -18,6 +18,23 @@ const getLinks = () => {
   });
 };
 
+const createLinks = (body) => {
+  return new Promise(function (resolve, reject) {
+    const { url, name } = body;
+    pool.query(
+      'INSERT INTO links (url,name) VALUES ($1,$2) RETURNING *',
+      [url, name],
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results.rows[0]);
+      }
+    );
+  });
+};
+
 module.exports = {
   getLinks,
+  createLinks,
 };
